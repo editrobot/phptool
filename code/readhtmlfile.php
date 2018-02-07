@@ -1,39 +1,8 @@
 <?php
-function read_all_file($argument){
+function read_all_file($url){
 	$encode = 'utf-8';
 	$url = '';
 	$format = 'phptag';
-	$argument_array = explode(":",$argument);
-	unset($argument);
-	$argument_array_count = 0;
-	while(isset($argument_array[$argument_array_count])){
-		switch($argument_array[$argument_array_count]){
-			case 'url':
-				++$argument_array_count;
-				if('http' == $argument_array[$argument_array_count]){
-					$url = $argument_array[$argument_array_count].':'.$argument_array[$argument_array_count+1];
-					$argument_array_count += 2;
-				}
-				else{
-					$url = $argument_array[$argument_array_count];
-					++$argument_array_count;
-				}
-				break;
-			case 'encode':
-				++$argument_array_count;
-				$encode = $argument_array[$argument_array_count];
-				++$argument_array_count;
-				break;
-			case 'format':
-				++$argument_array_count;
-				$format = $argument_array[$argument_array_count];
-				++$argument_array_count;
-				break;
-			default:
-		}
-		++$argument_array_count;
-	}
-	unset($argument_array,$argument_array_count);
 	$format_array = array();
 	$temp_array = array();
 	$status = 'lock';
